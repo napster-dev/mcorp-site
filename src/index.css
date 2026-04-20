@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --color-rust-light: #FF8A65;
+  --color-rust: #991B06;
+  --color-rust-dark: #660F00;
+  --color-background: #0A0A0A;
+  --color-surface: #141414;
+  --color-surface-light: #1E1E1E;
+
+  /* Semantic text colors */
+  --color-heading: #FFFFFF;
+  --color-body: #E5E5E5;
+  --color-body-secondary: #D1D5DB;
+  --color-muted: #9CA3AF;
+  --color-muted-strong: #6B7280;
+  --color-muted-faint: #4B5563;
+
+  /* Semantic border colors */
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+  --color-border-light: rgba(255, 255, 255, 0.1);
+  --color-border-medium: rgba(255, 255, 255, 0.2);
+
+  /* Glass / input backgrounds */
+  --color-glass: rgba(255, 255, 255, 0.05);
+
+  --font-poppins: "Poppins", sans-serif;
+  --font-lato: "Lato", sans-serif;
+}
+
+/* ─── Light Mode Overrides ─── */
+[data-theme="light"] {
+  --color-background: #F8F7F4;
+  --color-surface: #EFECE7;
+  --color-surface-light: #E5E1DC;
+
+  --color-heading: #1C1917;
+  --color-body: #44403C;
+  --color-body-secondary: #57534E;
+  --color-muted: #78716C;
+  --color-muted-strong: #A8A29E;
+  --color-muted-faint: #D6D3D1;
+
+  --color-border-subtle: rgba(0, 0, 0, 0.06);
+  --color-border-light: rgba(0, 0, 0, 0.1);
+  --color-border-medium: rgba(0, 0, 0, 0.15);
+
+  --color-glass: rgba(0, 0, 0, 0.04);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-body font-lato antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins font-medium tracking-tight;
+  }
+}
+
+.text-gradient-rust {
+  @apply bg-clip-text text-transparent bg-linear-to-r from-rust via-rust-light to-rust-dark;
+}
+
+.border-rust {
+  @apply border-rust/30 hover:border-rust transition-colors duration-500;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #991B06;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #660F00;
+}
+
+/* Custom classes for animations */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
