@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import Logo from './Logo';
+import { HeaderLogo } from './Logo';
 import ThemeToggle from './ThemeToggle';
 
 const Navbar: React.FC = () => {
@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
       >
         <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
           <a href="#" className="flex items-center group">
-            <Logo className="h-12 w-auto transition-transform group-hover:scale-105 duration-500" />
+            <HeaderLogo className="h-10 w-auto transition-transform group-hover:scale-105 duration-500" />
           </a>
 
           {/* Desktop Menu */}

@@ -41,7 +41,7 @@ const App: React.FC = () => {
                 className="relative mb-8"
               >
                 <div className="w-24 h-24 flex items-center justify-center">
-                  <Logo className="w-60 h-60" />
+                  <LoadingLogo className="w-60 h-60" />
                 </div>
                 <motion.div
                   className="absolute inset-0 border-t-2 border-rust"

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
-import Logo from './Logo';
+import { MainLogo } from './Logo';
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 lg:col-span-1">
             <a href="#" className="flex items-center mb-8 group">
-              <Logo className="h-12 w-auto transition-transform group-hover:scale-105 duration-500" />
+              <MainLogo className="h-24 w-auto transition-transform group-hover:scale-105 duration-500" />
             </a>
             <p className="text-muted-strong font-light leading-relaxed mb-8">
               Mcorp — Built Different. Islamabad's premier construction firm dedicated to innovation, efficiency, and excellence.
@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
 
         <div className="pt-12 border-t border-border-subtle flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-muted-faint text-xs uppercase tracking-widest">
-            © 2024 MCORP CONSTRUCTION. ALL RIGHTS RESERVED.
+            © 2026 MCORP CONSTRUCTION. ALL RIGHTS RESERVED.
           </p>
           <div className="flex space-x-8">
             <a href="#" className="text-muted-faint hover:text-rust text-[10px] uppercase tracking-widest transition-colors">Privacy Policy</a>
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
       {/* Floating Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className="absolute bottom-12 right-12 w-12 h-12 bg-rust/10 border border-rust/20 flex items-center justify-center text-rust hover:bg-rust hover:text-white transition-all duration-500"
+        className="absolute bottom-12 right-12 w-15 h-15 bg-rust/10 border border-rust/20 flex items-center justify-center text-rust hover:bg-rust hover:text-white transition-all duration-500"
       >
         <ArrowUp size={20} />
       </button>
