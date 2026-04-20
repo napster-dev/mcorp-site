@@ -9,7 +9,7 @@ import ProjectsGallery from './components/ProjectsGallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
-import Logo from './components/Logo';
+import { LoadingLogo } from './components/Logo';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
