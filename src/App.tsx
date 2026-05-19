@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
 import ProjectsGallery from './components/ProjectsGallery';
+import ProjectsPage from './components/ProjectsPage';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
@@ -64,11 +66,18 @@ const App: React.FC = () => {
 
         <main className={`${loading ? 'opacity-0' : 'opacity-100 transition-opacity duration-1000'}`}>
           <Navbar />
-          <Hero />
-          <About />
-          <Services />
-          <ProjectsGallery />
-          <Contact />
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero />
+                <About />
+                <Services />
+                <ProjectsGallery />
+                <Contact />
+              </>
+            } />
+            <Route path="/projects" element={<ProjectsPage />} />
+          </Routes>
           <Footer />
         </main>
       </div>

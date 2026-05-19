@@ -1,59 +1,35 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { projects } from '../utils/projectData';
+import ProjectPreviewModal from './ProjectPreviewModal';
 
 const ProjectsGallery: React.FC = () => {
   const [filter, setFilter] = useState('All');
+  const [selectedProject, setSelectedProject] = useState<any | null>(null);
 
   const categories = ['All', 'Residential', 'Commercial', 'Civil Works'];
 
-  const projects = [
-    {
-      id: 1,
-      title: 'Islamabad Modern Towers',
-      category: 'Commercial',
-      description: 'A futuristic commercial development in the heart of Islamabad.',
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070",
-    },
-    {
-      id: 2,
-      title: 'Luxury Villa G-11',
-      category: 'Residential',
-      description: 'A high-end residential project with modern aesthetic and robust engineering.',
-      image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=2070",
-    },
-    {
-      id: 3,
-      title: 'Metropolitan Bridge',
-      category: 'Civil Works',
-      description: 'Large-scale infrastructure project demonstrating excellence in execution.',
-      image: "https://images.unsplash.com/photo-1545558014-8687977e99e4?auto=format&fit=crop&q=80&w=2070",
-    },
-    {
-      id: 4,
-      title: 'Blue Area Corporate Plaza',
-      category: 'Commercial',
-      description: 'A landmark commercial project focused on sustainable construction.',
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069",
-    },
-    {
-      id: 5,
-      title: 'The Haven Residencies',
-      category: 'Residential',
-      description: 'Luxury apartments blending comfort with world-class amenities.',
-      image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&q=80&w=2070",
-    },
-    {
-      id: 6,
-      title: 'Industrial Park Infrastructure',
-      category: 'Civil Works',
-      description: 'Comprehensive civil works and infrastructure for industrial development.',
-      image: "https://images.unsplash.com/photo-1518005020481-4235e1284f18?auto=format&fit=crop&q=80&w=2070",
-    },
-  ];
+  // Slice first 3 projects (one of each category: Commercial, Residential, Civil Works)
+  const curatedProjects = projects.slice(0, 3);
 
   const filteredProjects = filter === 'All' 
-    ? projects 
-    : projects.filter(p => p.category === filter);
+    ? curatedProjects 
+    : curatedProjects.filter(p => p.category === filter);
+
+  const handlePrevProject = () => {
+    if (!selectedProject) return;
+    const currentIndex = filteredProjects.findIndex(p => p.id === selectedProject.id);
+    const prevIndex = (currentIndex - 1 + filteredProjects.length) % filteredProjects.length;
+    setSelectedProject(filteredProjects[prevIndex]);
+  };
+
+  const handleNextProject = () => {
+    if (!selectedProject) return;
+    const currentIndex = filteredProjects.findIndex(p => p.id === selectedProject.id);
+    const nextIndex = (currentIndex + 1) % filteredProjects.length;
+    setSelectedProject(filteredProjects[nextIndex]);
+  };
 
   return (
     <section id="projects" className="py-24 md:py-32 bg-background overflow-hidden transition-colors duration-500">
@@ -104,10 +80,11 @@ const ProjectsGallery: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.5 }}
-                className="group relative overflow-hidden aspect-4/5"
+                onClick={() => setSelectedProject(project)}
+                className="group relative overflow-hidden aspect-square border border-rust cursor-pointer rounded-sm hover:shadow-[0_0_15px_rgba(153,27,6,0.4)] transition-all duration-500"
               >
                 <img 
-                  src={project.image} 
+                  src={project.images[0]} 
                   alt={project.title} 
                   className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0"
                 />
@@ -115,15 +92,17 @@ const ProjectsGallery: React.FC = () => {
                 {/* Overlay on Hover */}
                 <div className="absolute inset-0 bg-linear-to-t from-background/95 via-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
                   <span className="text-rust font-poppins text-xs uppercase tracking-[0.3em] mb-2">{project.category}</span>
-                  <h3 className="text-2xl font-poppins font-bold text-heading mb-3">{project.title}</h3>
-                  <p className="text-muted text-sm mb-6 leading-relaxed">{project.description}</p>
-                  <motion.div
-                    whileHover={{ x: 10 }}
-                    className="flex items-center space-x-3 cursor-pointer group/link"
-                  >
+                  <h3 className="text-2xl font-poppins font-bold text-heading mb-1">{project.title}</h3>
+                  <div className="flex items-center space-x-2 text-[11px] text-muted mb-3 font-poppins tracking-wider">
+                    <span>{project.year}</span>
+                    <span>•</span>
+                    <span>{project.location}</span>
+                  </div>
+                  <p className="text-muted text-sm mb-6 leading-relaxed line-clamp-2">{project.description}</p>
+                  <div className="flex items-center space-x-3 group/link">
                     <span className="text-heading text-sm font-poppins font-semibold uppercase tracking-widest group-hover/link:text-rust transition-colors">View Project</span>
                     <div className="w-8 h-px bg-rust"></div>
-                  </motion.div>
+                  </div>
                 </div>
 
                 {/* Always visible category label in corner */}
@@ -136,7 +115,34 @@ const ProjectsGallery: React.FC = () => {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* See All Projects CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mt-20 flex justify-center"
+        >
+          <Link
+            to="/projects"
+            className="group px-8 py-4 border border-rust text-rust hover:bg-rust hover:text-white transition-all duration-500 text-sm font-poppins uppercase tracking-[0.2em] font-semibold hover:shadow-[0_0_20px_rgba(153,27,6,0.3)]"
+          >
+            See All Projects
+          </Link>
+        </motion.div>
       </div>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectPreviewModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+            onPrev={handlePrevProject}
+            onNext={handleNextProject}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };

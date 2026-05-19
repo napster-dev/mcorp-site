@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { HashLink } from 'react-router-hash-link';
 import { HeaderLogo } from './Logo';
 import ThemeToggle from './ThemeToggle';
 
@@ -17,10 +18,10 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'About', to: '/#about' },
+    { name: 'Services', to: '/#services' },
+    { name: 'Projects', to: '/projects' },
+    { name: 'Contact', to: '/#contact' },
   ];
 
   return (
@@ -39,27 +40,35 @@ const Navbar: React.FC = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-10">
             {navLinks.map((link, index) => (
-              <motion.a
+              <motion.div
                 key={link.name}
-                href={link.href}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="text-sm font-poppins uppercase tracking-[0.2em] text-muted hover:text-rust transition-colors relative group"
               >
-                {link.name}
-                <span className="absolute -bottom-2 left-0 w-0 h-px bg-rust transition-all duration-300 group-hover:w-full"></span>
-              </motion.a>
+                <HashLink
+                  smooth
+                  to={link.to}
+                  className="text-sm font-poppins uppercase tracking-[0.2em] text-muted hover:text-rust transition-colors relative group block"
+                >
+                  {link.name}
+                  <span className="absolute -bottom-2 left-0 w-0 h-px bg-rust transition-all duration-300 group-hover:w-full"></span>
+                </HashLink>
+              </motion.div>
             ))}
             <ThemeToggle />
-            <motion.a
-              href="#contact"
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="px-6 py-2 border border-rust text-rust hover:bg-rust hover:text-white transition-all duration-500 text-sm font-poppins uppercase tracking-widest"
             >
-              Get a Quote
-            </motion.a>
+              <HashLink
+                smooth
+                to="/#contact"
+                className="px-6 py-2 border border-rust text-rust hover:bg-rust hover:text-white transition-all duration-500 text-sm font-poppins uppercase tracking-widest block"
+              >
+                Get a Quote
+              </HashLink>
+            </motion.div>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -93,28 +102,36 @@ const Navbar: React.FC = () => {
             </button>
             <div className="flex flex-col items-center space-y-8">
               {navLinks.map((link, index) => (
-                <motion.a
+                <motion.div
                   key={link.name}
-                  href={link.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-3xl font-poppins font-light text-heading hover:text-rust tracking-widest"
                 >
-                  {link.name}
-                </motion.a>
+                  <HashLink
+                    smooth
+                    to={link.to}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-3xl font-poppins font-light text-heading hover:text-rust tracking-widest block"
+                  >
+                    {link.name}
+                  </HashLink>
+                </motion.div>
               ))}
-              <motion.a
-                href="#contact"
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                onClick={() => setIsMenuOpen(false)}
-                className="mt-8 px-10 py-4 border border-rust text-rust text-xl font-poppins uppercase tracking-widest"
               >
-                Get a Quote
-              </motion.a>
+                <HashLink
+                  smooth
+                  to="/#contact"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="mt-8 px-10 py-4 border border-rust text-rust text-xl font-poppins uppercase tracking-widest block text-center"
+                >
+                  Get a Quote
+                </HashLink>
+              </motion.div>
             </div>
           </motion.div>
         )}
