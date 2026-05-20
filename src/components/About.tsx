@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const About: React.FC = () => {
   return (
@@ -54,13 +55,15 @@ const About: React.FC = () => {
               </div>
             </div>
 
-            <motion.div
-              whileHover={{ x: 10 }}
-              className="mt-8 flex items-center space-x-4 cursor-pointer group"
-            >
-              <div className="w-12 h-px bg-rust group-hover:w-20 transition-all duration-300"></div>
-              <span className="text-rust font-poppins uppercase tracking-widest text-sm font-semibold">Read our story</span>
-            </motion.div>
+            <Link to="/about">
+              <motion.div
+                whileHover={{ x: 10 }}
+                className="mt-8 flex items-center space-x-4 cursor-pointer group"
+              >
+                <div className="w-12 h-px bg-rust group-hover:w-20 transition-all duration-300"></div>
+                <span className="text-rust font-poppins uppercase tracking-widest text-sm font-semibold">Read our story</span>
+              </motion.div>
+            </Link>
           </motion.div>
         </div>
       </div>

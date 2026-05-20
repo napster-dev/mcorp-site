@@ -8,6 +8,7 @@ import About from './components/About';
 import Services from './components/Services';
 import ProjectsGallery from './components/ProjectsGallery';
 import ProjectsPage from './components/ProjectsPage';
+import AboutPage from './components/AboutPage';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
@@ -77,6 +78,7 @@ const App: React.FC = () => {
               </>
             } />
             <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/about" element={<AboutPage />} />
           </Routes>
           <Footer />
         </main>

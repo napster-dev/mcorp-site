@@ -82,6 +82,45 @@
           }
         }
       }
+    },
+    {
+      "id": "team",
+      "title": "Team Members",
+      "file": "[[workspace]]/src/data/team.json",
+      "fileType": "json",
+      "labelField": "name",
+      "singleEntry": false,
+      "schema": {
+        "title": "Team Member",
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "role",
+          "image"
+        ],
+        "properties": {
+          "id": {
+            "title": "ID",
+            "type": "number"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "role": {
+            "title": "Role",
+            "type": "string"
+          },
+          "image": {
+            "title": "Profile Image",
+            "type": "string",
+            "media": {
+              "type": "image"
+            }
+          }
+        }
+      }
     }
   ],
   "frontMatter.framework.id": "other",
