@@ -31,3 +31,6 @@ npm-debug.log*
 .dev.vars*
 !.dev.vars.example
 !.env.example
+
+# Zaemit AI tool config (auto-generated)
+.mcp.json

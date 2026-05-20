@@ -87,19 +87,19 @@ const ProjectsPage: React.FC = () => {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5 }}
                 onClick={() => setSelectedProject(project)}
-                className="group relative overflow-hidden aspect-square border border-rust cursor-pointer rounded-sm hover:shadow-[0_0_20px_rgba(153,27,6,0.5)] hover:border-rust transition-all duration-500"
+                className="group relative overflow-hidden aspect-square border border-rust cursor-pointer hover:shadow-[0_0_20px_rgba(153,27,6,0.5)] hover:border-rust transition-all duration-500"
               >
                 {/* Main Image (Grayscale base, color and scale on hover) */}
                 <div className="w-full h-full overflow-hidden">
                   <img 
                     src={project.images[0]} 
                     alt={project.title} 
-                    className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                    className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-115 group-hover:grayscale-0"
                   />
                 </div>
                 
                 {/* Always-visible text and details overlay with slight blur */}
-                <div className="absolute bottom-0 left-0 w-full z-10 p-6 md:p-8 bg-black/60 backdrop-blur-md border-t border-rust/10 flex flex-col justify-end transition-all duration-500 group-hover:bg-black/70">
+                <div className="absolute bottom-0 left-0 w-full z-10 p-6 md:p-8 bg-white/60 backdrop-blur-sm border-t border-rust/10 flex flex-col justify-end transition-all duration-500 group-hover:bg-black/50">
                   <div className="flex justify-between items-start gap-4 mb-2">
                     <span className="text-rust font-poppins text-[10px] uppercase tracking-[0.25em]">
                       {project.category}

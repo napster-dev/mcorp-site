@@ -1,0 +1,89 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.content.publicFolder": "public",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "content",
+      "path": "[[workspace]]/src/content"
+    }
+  ],
+  "frontMatter.data.files": [
+    {
+      "id": "projects",
+      "title": "Portfolio Projects",
+      "file": "[[workspace]]/public/data/projects.json",
+      "fileType": "json",
+      "labelField": "title",
+      "singleEntry": false,
+      "schema": {
+        "title": "Project",
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "category",
+          "description",
+          "client",
+          "location",
+          "year",
+          "images"
+        ],
+        "properties": {
+          "id": {
+            "title": "Project ID",
+            "type": "number",
+            "description": "Unique identifier for the project."
+          },
+          "title": {
+            "title": "Project Title",
+            "type": "string",
+            "description": "The public title of the project."
+          },
+          "category": {
+            "title": "Category",
+            "type": "string",
+            "enum": [
+              "Residential",
+              "Commercial",
+              "Civil Works"
+            ],
+            "description": "The category classification for filtering."
+          },
+          "description": {
+            "title": "Description",
+            "type": "string",
+            "description": "Detailed project description/write-up."
+          },
+          "client": {
+            "title": "Client Name",
+            "type": "string",
+            "description": "The name of the client/organization."
+          },
+          "location": {
+            "title": "Location",
+            "type": "string",
+            "description": "Address or geographic location of the site."
+          },
+          "year": {
+            "title": "Year Completed",
+            "type": "string",
+            "description": "Year of completion (e.g. '2025')."
+          },
+          "images": {
+            "title": "Project Images",
+            "type": "array",
+            "description": "Manage local image files for the project preview carousel.",
+            "items": {
+              "type": "string",
+              "media": {
+                "type": "image"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "frontMatter.framework.id": "other",
+  "frontMatter.git.enabled": true
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Calendar, User, MapPin } from 'lucide-react';
+import { HashLink } from 'react-router-hash-link';
 import { Project } from '../utils/projectData';
 
 interface ProjectPreviewModalProps {
@@ -196,13 +197,14 @@ const ProjectPreviewModal: React.FC<ProjectPreviewModalProps> = ({
             <span className="text-[10px] text-white/30 uppercase tracking-widest">
               Mcorp Engineering
             </span>
-            <a
-              href="#contact"
+            <HashLink
+              smooth
+              to="/#contact"
               onClick={onClose}
               className="text-xs text-rust font-poppins uppercase tracking-widest font-semibold hover:text-heading transition-colors"
             >
               Inquire Project →
-            </a>
+            </HashLink>
           </div>
         </div>
       </motion.div>

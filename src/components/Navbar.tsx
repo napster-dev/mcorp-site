@@ -33,9 +33,9 @@ const Navbar: React.FC = () => {
           }`}
       >
         <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-          <a href="#" className="flex items-center group">
+          <HashLink smooth to="/" className="flex items-center group">
             <HeaderLogo className="h-10 w-auto transition-transform group-hover:scale-105 duration-500" />
-          </a>
+          </HashLink>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-10">

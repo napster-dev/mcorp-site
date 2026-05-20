@@ -1,45 +1,64 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Send, Globe, MessageCircle, Share2, ExternalLink } from 'lucide-react';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Send,
+  Globe,
+  MessageCircle,
+  Share2,
+  ExternalLink,
+} from "lucide-react";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    projectType: 'Residential',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    projectType: "Residential",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-surface transition-colors duration-500">
+    <section
+      id="contact"
+      className="py-24 md:py-32 bg-surface transition-colors duration-500"
+    >
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-rust font-poppins text-sm uppercase tracking-[0.4em] mb-4 block">Get In Touch</span>
+            <span className="text-rust font-poppins text-md uppercase tracking-[0.4em] mb-4 block">
+              Get In Touch
+            </span>
             <h2 className="text-4xl md:text-6xl font-poppins font-bold text-heading mb-8">
-              Let's Build Your <span className="text-gradient-rust italic">Vision</span>
+              Let's Build Your{" "}
+              <span className="text-gradient-rust italic">Vision</span>
             </h2>
             <p className="text-muted text-lg font-light mb-12 leading-relaxed">
-              We are ready to turn your complex challenges into bold, lasting solutions. Contact us today to discuss your next landmark project.
+              We are ready to turn your complex challenges into bold, lasting
+              solutions. Contact us today to discuss your next landmark project.
             </p>
 
             <div className="space-y-8">
@@ -48,8 +67,12 @@ const Contact: React.FC = () => {
                   <Phone size={20} className="text-rust" />
                 </div>
                 <div>
-                  <p className="text-muted-strong text-xs uppercase tracking-widest mb-1">Call Us</p>
-                  <p className="text-heading text-lg font-poppins">+92 (051) 123-4567</p>
+                  <p className="text-muted-strong text-xs uppercase tracking-widest mb-1">
+                    Call Us
+                  </p>
+                  <p className="text-heading text-lg font-poppins">
+                    +92 (051) 123-4567
+                  </p>
                 </div>
               </div>
               <div className="flex items-start space-x-6 group">
@@ -57,8 +80,12 @@ const Contact: React.FC = () => {
                   <Mail size={20} className="text-rust" />
                 </div>
                 <div>
-                  <p className="text-muted-strong text-xs uppercase tracking-widest mb-1">Email Us</p>
-                  <p className="text-heading text-lg font-poppins">info@mcorp.com.pk</p>
+                  <p className="text-muted-strong text-xs uppercase tracking-widest mb-1">
+                    Email Us
+                  </p>
+                  <p className="text-heading text-lg font-poppins">
+                    info@mcorp.com.pk
+                  </p>
                 </div>
               </div>
               <div className="flex items-start space-x-6 group">
@@ -66,8 +93,12 @@ const Contact: React.FC = () => {
                   <MapPin size={20} className="text-rust" />
                 </div>
                 <div>
-                  <p className="text-muted-strong text-xs uppercase tracking-widest mb-1">Headquarters</p>
-                  <p className="text-heading text-lg font-poppins">Blue Area, Islamabad, Pakistan</p>
+                  <p className="text-muted-strong text-xs uppercase tracking-widest mb-1">
+                    Headquarters
+                  </p>
+                  <p className="text-heading text-lg font-poppins">
+                    Blue Area, Islamabad, Pakistan
+                  </p>
                 </div>
               </div>
             </div>
@@ -96,7 +127,9 @@ const Contact: React.FC = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] text-muted-strong uppercase tracking-widest font-bold">Full Name</label>
+                  <label className="text-[10px] text-muted-strong uppercase tracking-widest font-bold">
+                    Full Name
+                  </label>
                   <input
                     type="text"
                     name="name"
@@ -107,7 +140,9 @@ const Contact: React.FC = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] text-muted-strong uppercase tracking-widest font-bold">Email Address</label>
+                  <label className="text-[10px] text-muted-strong uppercase tracking-widest font-bold">
+                    Email Address
+                  </label>
                   <input
                     type="email"
                     name="email"
@@ -121,7 +156,9 @@ const Contact: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] text-muted-strong uppercase tracking-widest font-bold">Phone Number</label>
+                  <label className="text-[10px] text-muted-strong uppercase tracking-widest font-bold">
+                    Phone Number
+                  </label>
                   <input
                     type="tel"
                     name="phone"
@@ -131,22 +168,34 @@ const Contact: React.FC = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] text-muted-strong uppercase tracking-widest font-bold">Project Type</label>
+                  <label className="text-[10px] text-muted-strong uppercase tracking-widest font-bold">
+                    Project Type
+                  </label>
                   <select
                     name="projectType"
                     className="w-full bg-glass border-b border-border-medium px-4 py-3 text-heading focus:outline-none focus:border-rust transition-colors"
                     onChange={handleChange}
                   >
-                    <option className="bg-background text-heading">Residential</option>
-                    <option className="bg-background text-heading">Commercial</option>
-                    <option className="bg-background text-heading">Civil Works</option>
-                    <option className="bg-background text-heading">Renovation</option>
+                    <option className="bg-background text-heading">
+                      Residential
+                    </option>
+                    <option className="bg-background text-heading">
+                      Commercial
+                    </option>
+                    <option className="bg-background text-heading">
+                      Civil Works
+                    </option>
+                    <option className="bg-background text-heading">
+                      Renovation
+                    </option>
                   </select>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] text-muted-strong uppercase tracking-widest font-bold">Project Description</label>
+                <label className="text-[10px] text-muted-strong uppercase tracking-widest font-bold">
+                  Project Description
+                </label>
                 <textarea
                   name="message"
                   required
@@ -164,7 +213,10 @@ const Contact: React.FC = () => {
                 className="w-full py-5 bg-rust text-white font-poppins font-bold uppercase tracking-[0.3em] flex items-center justify-center space-x-3 group hover:bg-rust-light transition-colors duration-300"
               >
                 <span>Send Inquiry</span>
-                <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                <Send
+                  size={18}
+                  className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"
+                />
               </motion.button>
             </form>
           </motion.div>

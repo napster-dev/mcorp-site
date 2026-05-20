@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
+import { HashLink } from 'react-router-hash-link';
 import { MainLogo } from './Logo';
 
 const Footer: React.FC = () => {
@@ -12,9 +13,9 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 lg:col-span-1">
-            <a href="#" className="flex items-center mb-8 group">
+            <HashLink smooth to="/" className="flex items-center mb-8 group">
               <MainLogo className="h-24 w-auto transition-transform group-hover:scale-105 duration-500" />
-            </a>
+            </HashLink>
             <p className="text-muted-strong font-light leading-relaxed mb-8">
               Mcorp — Built Different. Islamabad's premier construction firm dedicated to innovation, efficiency, and excellence.
             </p>
@@ -23,11 +24,22 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-heading font-poppins font-semibold uppercase tracking-widest mb-8 text-sm">Navigation</h4>
             <ul className="space-y-4">
-              {['Home', 'About Us', 'Services', 'Projects', 'Careers', 'Contact'].map((item) => (
-                <li key={item}>
-                  <a href={`#${item.toLowerCase().replace(' ', '')}`} className="text-muted-strong hover:text-rust transition-colors duration-300 text-sm">
-                    {item}
-                  </a>
+              {[
+                { name: 'Home', to: '/' },
+                { name: 'About Us', to: '/#about' },
+                { name: 'Services', to: '/#services' },
+                { name: 'Projects', to: '/projects' },
+                { name: 'Careers', to: '/#contact' },
+                { name: 'Contact', to: '/#contact' },
+              ].map((item) => (
+                <li key={item.name}>
+                  <HashLink
+                    smooth
+                    to={item.to}
+                    className="text-muted-strong hover:text-rust transition-colors duration-300 text-sm"
+                  >
+                    {item.name}
+                  </HashLink>
                 </li>
               ))}
             </ul>
@@ -45,9 +57,13 @@ const Footer: React.FC = () => {
                 'Renovation'
               ].map((item) => (
                 <li key={item}>
-                  <a href="#services" className="text-muted-strong hover:text-rust transition-colors duration-300 text-sm">
+                  <HashLink
+                    smooth
+                    to="/#services"
+                    className="text-muted-strong hover:text-rust transition-colors duration-300 text-sm"
+                  >
                     {item}
-                  </a>
+                  </HashLink>
                 </li>
               ))}
             </ul>
